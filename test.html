@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/css/basic/emojify.min.css" /> -->
+  </head>
+  <body>
+    <input type="file" id="file" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+    <script>
+        var test = document.getElementById('file')
+        test.onchange = function(e){
+            // 转二进制
+            var form_data = new FormData()
+            form_data.append('img',e.target.files[0])
+            console.log(form_data.get('img'))
+            console.log(e.target.files[0])
+            $.ajax({
+            type:"post",
+            contentType:false,
+            processData:false,
+            async:false,
+            url:'http://localhost/functions/image_upload.php',
+            data: form_data,
+            success:function(data){
+                console.log(data)
+            },
+            error:function(err){
+                console.log('失败')
+            }
+          })
+        }
+    </script>
+  </body>
+</html>

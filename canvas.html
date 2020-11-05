@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>Canvas：</p>
+    <canvas id="canvas" style="border: 1px solid #ccc"></canvas>
+    <br />
+    <p>Base64转码后的图片：</p>
+    <div id="base64Img"></div>
+    <script type="text/javascript">
+      var base64Img = document.getElementById("base64Img"),
+        canvas = document.getElementById("canvas"),
+        context = canvas.getContext("2d");
+
+      // 创建新图片
+      var img = new Image();
+      img.setAttribute("crossOrigin",'anonymous') 
+      img.src = "./images/1.png";
+
+      img.addEventListener(
+        "load",
+        function () {
+          // 绘制图片到canvas上
+          canvas.width = img.width;
+          canvas.height = img.height;
+
+          context.drawImage(img, 0, 0);
+
+          getBase64(canvas, function (dataUrl) {
+            // 展示base64位的图片
+            var newImg = document.createElement("img");
+            newImg.src = dataUrl;
+
+            base64Img.appendChild(newImg);
+          });
+        },
+        false
+      );
+
+      // 获取canvas的base64图片的dataURL（图片格式为image/jpeg）
+      function getBase64(canvas, callback) {
+          console.log(canvas)
+        var dataURL = canvas.toDataURL();
+        console.log(dataURL)
+
+        if (typeof callback !== undefined) {
+          callback(dataURL);
+        }
+      }
+    </script>
+  </body>
+</html>

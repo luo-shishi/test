@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <fieldset>
+        <input type="file" />
+        <label>读取进度：</label><progress id="progress" value="0" max="100"></progress>
+    </fieldset>
+    <script>
+        var progress = document.getElementById('progress')
+        window.onload = function(){
+            var timer = setInterval(() => {
+                progress.value += 10
+                if(progress.value >= progress.max){
+                    clearInterval(timer)
+                    console.log('结束')
+                }
+            }, 500);
+        }
+    </script>
+</body>
+</html>

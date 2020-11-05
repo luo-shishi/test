@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .emoji {
+        width: 1.5em;
+        height: 1.5em;
+        display: inline-block;
+        margin-bottom: -0.25em;
+        background-size: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="emoji"></div>
+    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+    <script>
+        var emoji = twemoji.parse('/::)')
+        var emoji2 = twemoji.parse('\ud83c\udf3d')
+        console.log(twemoji)
+        console.log(emoji)
+        console.log(emoji2)
+
+        var el = document.createElement('div')
+        el.innerHTML = emoji
+        document.body.appendChild(el)
+    </script>
+    <!-- <script src="./js/emojify.js"></script>
+    <script>
+        var a = document.getElementsByClassName('emoji')
+        /* console.log(emojify) */
+      emojify.setConfig({
+        emojify_tag_type: "div", // Only run emojify.js on this element
+        only_crawl_id: null, // Use to restrict where emojify.js applies
+        img_dir: "images/emoji", // Directory for emoji images
+        ignored_tags: {
+          // Ignore the following tags
+          SCRIPT: 1,
+          TEXTAREA: 1,
+          A: 1,
+          PRE: 1,
+          CODE: 1,
+        },
+      });
+      console.log(emojify.run)
+      emojify.run(a[0]);
+    </script> -->
+  </body>
+</html>

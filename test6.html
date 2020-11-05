@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #qianduanwz{ width: 900px; height: 383px; text-align: center; background: rgba(0,0,0,0.5)}
+        #qianduanwz img{ width: 200px; margin-top: 60px;}
+        #qianduanwz p{ margin: 0; padding-top: 10px; font-size: 20px;}
+      </style>
+</head>
+<body>
+    <div id="qianduanwz">
+        <img src="./images/father.jpg" alt="">
+        <p>学习Web前端<br>关注前端微站</p>
+      </div>
+      <div id="test" style="margin-top:30px;width:300px;height:auto;">
+        <img id="img" src="" style="margin-top:30px;width: 100%;height: 100%;" />
+      </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <script>
+        window.onload = function(){
+          html2canvas(document.getElementById('qianduanwz'),{
+    useCORS: true,
+    backgroundColor:null,
+}).then((canvas) => {
+            canvas.useCORS = true
+            var src = canvas.toDataURL('image/png').replace("image/png","image/octet-stream")
+            var img = document.getElementById('img')
+            img.src = src
+          })
+        }
+    </script>
+</body>
+</html>
